@@ -5,7 +5,7 @@ export default function About() {
 
       <div className="relative z-10 max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <img
-          src="/profile/Tharun.jpg"
+          src="/my-portfolio/profile/Tharun.jpg"
           alt="Tharun's profile"
           className="w-full h-auto rounded-lg shadow-xl object-cover transition-transform duration-300 hover:scale-105"
         />

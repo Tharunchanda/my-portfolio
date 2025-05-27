@@ -4,27 +4,27 @@ import "react-tabs/style/react-tabs.css";
 
 const certifications = {
   coursera: [
-    { title: "AI Essentials", year: 2023, img: "/certificates/ai_essentials.jpg" },
-    { title: "Crash course on python", year: 2023, img: "/certificates/carsh_course_on_python.jpg" },
-    { title: "Project Management", year: 2023, img: "/certificates/project_management.jpg" },
-    { title: "Version Control", year: 2023, img: "/certificates/version_control.jpg" },
-    { title: "Introduction to Front-End Development", year: 2023, img: "/certificates/intro_to_Front_End.jpg" },
+    { title: "AI Essentials", year: 2023, img: "/my-portfolio/certificates/ai_essentials.jpg" },
+    { title: "Crash course on python", year: 2023, img: "/my-portfolio/certificates/carsh_course_on_python.jpg" },
+    { title: "Project Management", year: 2023, img: "/my-portfolio/certificates/project_management.jpg" },
+    { title: "Version Control", year: 2023, img: "/my-portfolio/certificates/version_control.jpg" },
+    { title: "Introduction to Front-End Development", year: 2023, img: "/my-portfolio/certificates/intro_to_Front_End.jpg" },
   ],
   achievement: [
-    { title: "NASA International space apps challenge", year: 2024, img: "/certificates/NASA_1st_prize_certificate.jpg" },
+    { title: "NASA International space apps challenge", year: 2024, img: "/my-portfolio/certificates/NASA_1st_prize_certificate.jpg" },
   ],
   pors: [
-    { title: "Planning and Management Head Xpecto'25", year: 2025, img: "/certificates/pnm_head.jpg" },
-    { title: "SNTC Core Team Member", year: 2024, img: "/certificates/Tharun_Chanda.png" },
-    { title: "STAC Core Team Member", year: 2024, img: "/certificates/Stac_Chanda_Tharun.png" },
+    { title: "Planning and Management Head Xpecto'25", year: 2025, img: "/my-portfolio/certificates/pnm_head.jpg" },
+    { title: "SNTC Core Team Member", year: 2024, img: "/my-portfolio/certificates/Tharun_Chanda.png" },
+    { title: "STAC Core Team Member", year: 2024, img: "/my-portfolio/certificates/Stac_Chanda_Tharun.png" },
   ],
   cop: [
-    { title: "Flipkart Grid 6.O", year: 2024, img: "/certificates/Flipkart_Grid_6.jpg" },
-    { title: "NASA International space apps challenge", year: 2024, img: "/certificates/NASA_Space_Apps_Challenge.jpg" },
+    { title: "Flipkart Grid 6.O", year: 2024, img: "/my-portfolio/certificates/Flipkart_Grid_6.jpg" },
+    { title: "NASA International space apps challenge", year: 2024, img: "/my-portfolio/certificates/NASA_Space_Apps_Challenge.jpg" },
   ],
   more: [
-    { title: "JP Morgan Software Job simulation", year: 2023, img: "/certificates/JP_Morgan_certificate.jpg" },
-    { title: "Python for ML", year: 2023, img: "/certificates/ML_by_Great_Learning.jpg" },
+    { title: "JP Morgan Software Job simulation", year: 2023, img: "/my-portfolio/certificates/JP_Morgan_certificate.jpg" },
+    { title: "Python for ML", year: 2023, img: "/my-portfolio/certificates/ML_by_Great_Learning.jpg" },
   ],
 };
 
