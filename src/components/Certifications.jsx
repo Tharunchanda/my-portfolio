@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { motion, AnimatePresence } from "framer-motion";
 import "react-tabs/style/react-tabs.css";
 
 const certifications = {
@@ -12,6 +13,7 @@ const certifications = {
   ],
   achievement: [
     { title: "NASA International space apps challenge", year: 2024, img: "/my-portfolio/certificates/NASA_1st_prize_certificate.jpg" },
+    { title: "ATF", year: 2024, img: "/my-portfolio/certificates/atf.png" },
   ],
   pors: [
     { title: "Planning and Management Head Xpecto'25", year: 2025, img: "/my-portfolio/certificates/pnm_head.jpg" },
@@ -21,6 +23,7 @@ const certifications = {
   cop: [
     { title: "Flipkart Grid 6.O", year: 2024, img: "/my-portfolio/certificates/Flipkart_Grid_6.jpg" },
     { title: "NASA International space apps challenge", year: 2024, img: "/my-portfolio/certificates/NASA_Space_Apps_Challenge.jpg" },
+    { title: "Tata Imagination Challenge", year: 2024, img: "/my-portfolio/certificates/tata.png" },
   ],
   more: [
     { title: "JP Morgan Software Job simulation", year: 2023, img: "/my-portfolio/certificates/JP_Morgan_certificate.jpg" },
@@ -32,7 +35,14 @@ export default function Certifications() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <section id="certifications" className="py-16 px-6 bg-gray-800 text-white">
+    <motion.section
+      id="certifications"
+      className="py-16 px-6 bg-gray-800 text-white"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">Certifications</h2>
 
@@ -75,31 +85,37 @@ export default function Certifications() {
         </Tabs>
       </div>
 
-      {/* Modal */}
-      {selectedImage && (
-        <div
-        className="fixed inset-0 bg-transparent backdrop-blur-md flex justify-center items-center z-50"
-          onClick={() => setSelectedImage(null)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div className="relative max-w-3xl w-full p-4">
-            <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-2 right-2 text-white text-3xl hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
-              aria-label="Close modal"
-            >
-              &times;
-            </button>
-            <img
-              src={selectedImage}
-              alt="Certificate enlarged"
-              className="w-full max-h-[80vh] object-contain rounded-md shadow-lg"
-            />
-          </div>
-        </div>
-      )}
-    </section>
+      {/* Modal with animation */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className="fixed inset-0 bg-transparent backdrop-blur-md flex justify-center items-center z-50"
+            onClick={() => setSelectedImage(null)}
+            role="dialog"
+            aria-modal="true"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="relative max-w-3xl w-full p-4">
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-2 right-2 text-white text-3xl hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
+                aria-label="Close modal"
+              >
+                &times;
+              </button>
+              <img
+                src={selectedImage}
+                alt="Certificate enlarged"
+                className="w-full max-h-[80vh] object-contain rounded-md shadow-lg"
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.section>
   );
 }
 
@@ -107,7 +123,7 @@ function CertificationList({ certs, onImageClick }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       {certs.map((c, i) => (
-        <div
+        <motion.div
           key={i}
           className="
             relative group border border-gray-700 overflow-hidden shadow-md
@@ -124,6 +140,10 @@ function CertificationList({ certs, onImageClick }) {
             }
           }}
           aria-label={`View details for certification ${c.title}, issued in ${c.year}`}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: i * 0.1 }}
+          viewport={{ once: true }}
         >
           <img
             src={c.img}
@@ -143,7 +163,7 @@ function CertificationList({ certs, onImageClick }) {
             <h3 className="text-lg font-semibold text-gray-600">{c.title}</h3>
             <p className="text-gray-400 mt-1">{c.year}</p>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

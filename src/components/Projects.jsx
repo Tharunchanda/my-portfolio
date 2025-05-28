@@ -1,3 +1,6 @@
+import { useInView } from 'react-intersection-observer';
+import { motion } from 'framer-motion';
+
 const projects = [
   {
     title: "MoodStart",
@@ -17,15 +20,31 @@ const projects = [
 ];
 
 export default function Projects() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
+
   return (
-    <section id="projects" className="bg-white py-16 px-6">
+    <section id="projects" className="bg-white py-16 px-6" ref={ref}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-black mb-10">Projects</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold text-center text-black mb-10"
+        >
+          Projects
+        </motion.h2>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="grid md:grid-cols-2 gap-8"
+        >
           {projects.map((proj, index) => (
-            <div
+            <motion.div
               key={index}
-              className="border border-gray-300 rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300"
+              whileHover={{ scale: 1.02 }}
+              className="border border-gray-300 rounded-xl shadow-md p-6 bg-gray-50 transition"
             >
               <h3 className="text-2xl font-semibold text-gray-900 mb-2">{proj.title}</h3>
               <p className="text-gray-700 mb-3">{proj.description}</p>
@@ -45,7 +64,7 @@ export default function Projects() {
                     href={proj.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-800 hover:underline"
+                    className="text-blue-600 hover:underline"
                   >
                     GitHub
                   </a>
@@ -55,15 +74,15 @@ export default function Projects() {
                     href={proj.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:underline"
+                    className="text-green-600 hover:underline"
                   >
                     Live
                   </a>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
