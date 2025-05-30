@@ -2,3 +2,32 @@
 html {
   scroll-behavior: smooth;
 }
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 10s linear infinite;
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+@keyframes scroll-slow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-slow {
+  animation: scroll-slow 45s linear infinite;
+}
+
+
