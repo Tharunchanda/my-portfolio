@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { Tabs, Tab, Box } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
-import "react-tabs/style/react-tabs.css";
 
 const certifications = {
   coursera: [
     { title: "AI Essentials", year: 2023, img: "/my-portfolio/certificates/ai_essentials.jpg" },
-    { title: "Crash course on python", year: 2023, img: "/my-portfolio/certificates/carsh_course_on_python.jpg" },
+    { title: "Crash course on python", year: 2023, img: "/my-portfolio/certificates/crash_course_on_python.jpg" },
     { title: "Project Management", year: 2023, img: "/my-portfolio/certificates/project_management.jpg" },
     { title: "Version Control", year: 2023, img: "/my-portfolio/certificates/version_control.jpg" },
     { title: "Introduction to Front-End Development", year: 2023, img: "/my-portfolio/certificates/intro_to_Front_End.jpg" },
@@ -32,7 +31,17 @@ const certifications = {
 };
 
 export default function Certifications() {
+  const [tabIndex, setTabIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  const tabLabels = ["Coursera", "Achievements", "POR's", "COP's", "More..."];
+  const certData = [
+    certifications.coursera,
+    certifications.achievement,
+    certifications.pors,
+    certifications.cop,
+    certifications.more,
+  ];
 
   return (
     <motion.section
@@ -46,50 +55,42 @@ export default function Certifications() {
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">Certifications</h2>
 
-        <Tabs>
-          <TabList className="flex justify-center gap-8 mb-6 border-b-2 border-gray-700">
-            {["Coursera", "Achievements", "POR's", "COP's", "More..."].map((tabName, idx) => (
+        <Box className="mb-6 justify-around flex">
+          <Tabs
+            value={tabIndex}
+            onChange={(e, newValue) => setTabIndex(newValue)}
+            variant="scrollable"
+            scrollButtons="auto"
+            textColor="inherit"
+            TabIndicatorProps={{
+              style: {
+                backgroundColor: "#9ca3af", // Tailwind's gray-400
+                height: "3px",
+              },
+            }}
+          >
+            {tabLabels.map((label, index) => (
               <Tab
-                key={idx}
-                className="
-                  cursor-pointer py-2 px-4 text-lg 
-                  text-gray-400 hover:text-white focus:outline-none 
-                  focus:ring-2 focus:ring-gray-500 rounded
-                  selected:text-white selected:border-b-4 selected:border-gray-500
-                  transition-colors duration-300
-                "
-                selectedClassName="text-white border-b-4 border-gray-500"
-                aria-selected={false}
-                role="tab"
-              >
-                {tabName}
-              </Tab>
+                key={index}
+                label={label}
+                className="text-gray-400 hover:text-white transition-colors"
+              />
             ))}
-          </TabList>
+          </Tabs>
+        </Box>
 
-          <TabPanel>
-            <CertificationList certs={certifications.coursera} onImageClick={setSelectedImage} />
+        {certData.map((certs, index) => (
+          <TabPanel key={index} value={tabIndex} index={index}>
+            <CertificationList certs={certs} onImageClick={setSelectedImage} />
           </TabPanel>
-          <TabPanel>
-            <CertificationList certs={certifications.achievement} onImageClick={setSelectedImage} />
-          </TabPanel>
-          <TabPanel>
-            <CertificationList certs={certifications.pors} onImageClick={setSelectedImage} />
-          </TabPanel>
-          <TabPanel>
-            <CertificationList certs={certifications.cop} onImageClick={setSelectedImage} />
-          </TabPanel>
-          <TabPanel>
-            <CertificationList certs={certifications.more} onImageClick={setSelectedImage} />
-          </TabPanel>
-        </Tabs>
+        ))}
       </div>
 
-      {/* Modal with animation */}
+      {/* Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
-            className="fixed inset-0 bg-transparent backdrop-blur-md flex justify-center items-center z-50"
+            className="fixed inset-0 backdrop-blur-md bg-transparent bg-opacity-70 flex justify-center items-center z-50"
             onClick={() => setSelectedImage(null)}
             role="dialog"
             aria-modal="true"
@@ -101,7 +102,7 @@ export default function Certifications() {
             <div className="relative max-w-3xl w-full p-4">
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute top-2 right-2 text-white text-3xl hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 rounded"
+                className="absolute top-2 right-2 text-white text-3xl hover:text-gray-600 transition-colors"
                 aria-label="Close modal"
               >
                 &times;
@@ -119,17 +120,21 @@ export default function Certifications() {
   );
 }
 
+function TabPanel({ children, value, index }) {
+  return value === index ? (
+    <Box sx={{ py: 2 }}>
+      {children}
+    </Box>
+  ) : null;
+}
+
 function CertificationList({ certs, onImageClick }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {certs.map((c, i) => (
         <motion.div
           key={i}
-          className="
-            relative group border border-gray-700 overflow-hidden shadow-md
-            hover:shadow-xl transform hover:scale-[1.04] transition-all duration-300 cursor-pointer
-            focus:outline-none focus:ring-2 focus:ring-gray-500
-          "
+          className="relative group border border-gray-700 overflow-hidden shadow-md hover:shadow-xl transform hover:scale-[1.04] transition-all duration-300 cursor-pointer"
           onClick={() => onImageClick(c.img)}
           role="button"
           tabIndex={0}
@@ -139,27 +144,19 @@ function CertificationList({ certs, onImageClick }) {
               onImageClick(c.img);
             }
           }}
-          aria-label={`View details for certification ${c.title}, issued in ${c.year}`}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: i * 0.1 }}
           viewport={{ once: true }}
+          aria-label={`View ${c.title}, ${c.year}`}
         >
           <img
             src={c.img}
-            alt={`${c.title} certificate`}
+            alt={`Certificate: ${c.title}, ${c.year}`}
             className="w-full h-48 object-contain grayscale group-hover:grayscale-0 transition duration-300"
             loading="lazy"
           />
-
-          <div
-            className="
-              absolute inset-0 bg-transparent backdrop-blur-md bg-opacity-75
-              opacity-0 group-hover:opacity-100
-              flex flex-col justify-center items-center text-center
-              px-4 transition-opacity duration-300
-            "
-          >
+          <div className="absolute inset-0 bg-transparent backdrop-blur-md bg-opacity-75 opacity-0 group-hover:opacity-100 flex flex-col justify-center items-center text-center px-4 transition-opacity duration-300">
             <h3 className="text-lg font-semibold text-gray-600">{c.title}</h3>
             <p className="text-gray-400 mt-1">{c.year}</p>
           </div>
