@@ -26,6 +26,7 @@ const skills = [
   { name: "PostgreSQL", icon: "/my-portfolio/icons/postgresql.svg" },
 
   // Tools & Platforms
+  { name: "Material UI", icon: "/my-portfolio/icons/mui.svg" },
   { name: "Git", icon: "/my-portfolio/icons/git.svg" },
   { name: "GitHub", icon: "/my-portfolio/icons/github.svg" },
   { name: "Jupyter Notebook", icon: "/my-portfolio/icons/jupyter.svg" },

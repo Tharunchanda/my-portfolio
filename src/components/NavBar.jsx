@@ -36,7 +36,7 @@ export default function Navbar() {
                 "&:hover": { color: "gray.300" },
               }}
             >
-              Tharun
+              Portfolio
             </Typography>
           </motion.div>
 
