@@ -19,8 +19,8 @@ import { useTheme } from "@mui/material/styles";
 const navItems = [
   "home",
   "about",
-  "experience",
   "education",
+  "experience",
   "projects",
   "certifications",
   "contact",

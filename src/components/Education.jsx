@@ -18,7 +18,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900 text-gray-900 px-6 py-20"
+      className="bg-gradient-to-br from-gray-600 via-gray-900 to-gray-600 text-gray-900 px-6 py-20"
     >
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold mb-8 text-white text-center">Academic Background</h2>

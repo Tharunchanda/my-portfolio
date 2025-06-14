@@ -7,7 +7,7 @@ const experiences = [
     company: "IIT Mandi",
     duration: "Jun 2025 - Aug 2025",
     details: "Worked on frontend React features and REST APIs integration.",
-    github: "https://github.com/yourusername/iit-mandi-internship",
+    github: "https://github.com/Tharunchanda/CMS-Frontend",
     live: "",
     image: "/my-portfolio/images/cms.jpg", // Add your image path here
   },
@@ -20,7 +20,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="bg-gradient-to-br from-gray-600 via-gray-900 to-gray-600 text-white py-16 px-6"
+      className="bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900 text-white py-16 px-6"
       ref={ref}
     >
       <div className="max-w-5xl mx-auto">
