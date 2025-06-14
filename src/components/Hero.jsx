@@ -32,8 +32,14 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-600 via-gray-900 to-gray-600 text-white px-6 py-20"
     >
-      {/* Removed Particles component */}
-      <div className="backdrop-blur-md bg-white/10 rounded-xl p-8 shadow-lg relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Shadow effect behind the card */}
+      <div
+        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="w-[90vw] max-w-5xl h-[70vh] rounded-3xl shadow-2xl shadow-black/40 bg-black/30 blur-2xl opacity-60"></div>
+      </div>
+      <div className="backdrop-blur-md bg-white/10 rounded-xl p-8 shadow-2xl relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <motion.h1
             initial={{ opacity: 0, y: -40 }}

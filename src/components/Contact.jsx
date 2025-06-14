@@ -73,8 +73,8 @@ export default function Contact() {
   return (
     <Box
       id="contact"
+      className="bg-gradient-to-br from-gray-600 via-gray-900 to-gray-600"
       sx={{
-        background: "linear-gradient(to right, #0f0f0f, #1c1c1c)",
         py: 10,
         color: "#f5f5f5",
       }}
@@ -86,12 +86,13 @@ export default function Contact() {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <Paper
-            elevation={5}
+            elevation={0}
             sx={{
               p: 5,
-              backgroundColor: "#222",
+              backgroundColor: "rgba(34,34,34,0.5)", // semi-transparent dark
               borderRadius: 3,
-              boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
+              boxShadow: "0 8px 32px 0 rgba(0,0,0,0.25)",
+              backdropFilter: "blur(8px)", // glassmorphism effect
             }}
           >
             <Typography
@@ -218,21 +219,6 @@ export default function Contact() {
           </Paper>
         </motion.div>
       </Container>
-
-      <Snackbar
-        open={feedback.open}
-        autoHideDuration={4000}
-        onClose={() => setFeedback({ ...feedback, open: false })}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          severity={feedback.success ? "success" : "error"}
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          {feedback.message}
-        </Alert>
-      </Snackbar>
     </Box>
   );
 }

@@ -46,7 +46,7 @@ export default function Certifications() {
   return (
     <motion.section
       id="certifications"
-      className="py-16 px-6 bg-gray-800 text-white"
+      className="py-16 px-6 bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900 text-white"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -134,7 +134,7 @@ function CertificationList({ certs, onImageClick }) {
       {certs.map((c, i) => (
         <motion.div
           key={i}
-          className="relative group border border-gray-700 overflow-hidden shadow-md hover:shadow-xl transform hover:scale-[1.04] transition-all duration-300 cursor-pointer"
+          className="relative group  overflow-hidden shadow-md hover:shadow-xl transform hover:scale-[1.04] transition-all duration-300 cursor-pointer"
           onClick={() => onImageClick(c.img)}
           role="button"
           tabIndex={0}
