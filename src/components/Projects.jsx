@@ -163,7 +163,7 @@ export default function Projects() {
                         href={proj.ppt}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-700 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm hover:bg-red-700"
+                        className="bg-gray-700 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm hover:bg-gray-900"
                       >
                         View Ppt
                       </a>
@@ -173,7 +173,7 @@ export default function Projects() {
                         href={proj.video}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-gray-600 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm hover:bg-red-700"
+                        className="bg-gray-600 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm hover:bg-gray-900"
                       >
                         View Demo
                       </a>
