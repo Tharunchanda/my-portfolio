@@ -20,10 +20,9 @@ function useRotatingText(words, delay = 2500) {
 
 export default function Hero() {
   const roles = [
-    'React Developer',
-    'Web Developer',
     'Full Stack Developer',
     'AI/ML Explorer',
+    'Web Developer',
     'Tech Enthusiast',
   ];
   const currentRole = useRotatingText(roles, 2500);
@@ -31,14 +30,10 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-900 text-white px-6 py-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-600 via-gray-900 to-gray-600 text-white px-6 py-20"
     >
-      {/* Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 animate-gradient" />
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm z-0" />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Removed Particles component */}
+      <div className="backdrop-blur-md bg-white/10 rounded-xl p-8 shadow-lg relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <motion.h1
             initial={{ opacity: 0, y: -40 }}

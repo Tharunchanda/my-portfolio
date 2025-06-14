@@ -39,7 +39,7 @@ const duplicatedSkills = [...skills, ...skills];
 
 export default function Skills() {
   return (
-    <div className="w-full overflow-hidden bg-gray-600 py-10">
+    <div className="w-full overflow-hidden bg-gradient-to-br from-gray-800 via-gray-600 to-gray-800 py-10">
       <div className="relative h-[120px] w-full">
         <div className="flex gap-10 whitespace-nowrap w-max animate-scroll-slow">
           {duplicatedSkills.map((skill, idx) => (
@@ -50,7 +50,7 @@ export default function Skills() {
               <img
                 src={skill.icon}
                 alt={skill.name}
-                className="w-16 h-16 object-contain mb-2"
+                className="w-16 h-16 object-contain mb-2 "
                 loading="lazy"
               />
               <span className="text-sm font-medium">{skill.name}</span>

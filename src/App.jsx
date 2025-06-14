@@ -5,6 +5,7 @@ import Contact from "./components/Contact";
 import Certifications from "./components/Certifications";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
+import Education from "./components/Education";
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
       <Navbar />
       <Hero />
       <Skills/>
-      <Experience/>
+      <Experience />
+      <Education/>
       <Projects />
       <Certifications />
       <Contact />

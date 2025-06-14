@@ -1,42 +1,238 @@
 // src/components/Contact.jsx
+import React, { useState } from "react";
+import {
+  Box,
+  Container,
+  Typography,
+  TextField,
+  Button,
+  Grid,
+  IconButton,
+  Paper,
+  CircularProgress,
+  Snackbar,
+  Alert,
+  useTheme,
+} from "@mui/material";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    captcha: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState({ open: false, success: true, message: "" });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (form.captcha !== "5") {
+      setFeedback({ open: true, success: false, message: "CAPTCHA incorrect. Try again." });
+      return;
+    }
+
+    setLoading(true);
+
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      subject: form.subject,
+      message: form.message,
+    };
+
+    emailjs
+      .send(
+        "service_jb4domf",
+        "template_oip0e3b",
+        templateParams,
+        "U86fw4FLrlofzoFqR"
+      )
+      .then(
+        () => {
+          setLoading(false);
+          setFeedback({ open: true, success: true, message: "Message sent successfully!" });
+          setForm({ name: "", email: "", subject: "", message: "", captcha: "" });
+        },
+        () => {
+          setLoading(false);
+          setFeedback({ open: true, success: false, message: "Failed to send message." });
+        }
+      );
+  };
+
   return (
-    <section id="contact" className="bg-gray-50 py-16 px-6">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-black mb-6">Contact Me</h2>
-        <p className="text-lg text-gray-700 mb-8">
-          Feel free to reach out if you'd like to collaborate, hire me, or just say hello! 😊
-        </p>
-        <div className="flex justify-center gap-8 text-3xl text-gray-600">
-          <a
-            href="mailto:b23121@students.iitmandi.ac.in"
-            className="hover:text-black transition"
-            aria-label="Send Email"
+    <Box
+      id="contact"
+      sx={{
+        background: "linear-gradient(to right, #0f0f0f, #1c1c1c)",
+        py: 10,
+        color: "#f5f5f5",
+      }}
+    >
+      <Container maxWidth="sm">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <Paper
+            elevation={5}
+            sx={{
+              p: 5,
+              backgroundColor: "#222",
+              borderRadius: 3,
+              boxShadow: "0 8px 20px rgba(0,0,0,0.4)",
+            }}
           >
-            <FaEnvelope />
-          </a>
-          <a
-            href="https://github.com/TharunChanda"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-black transition"
-            aria-label="GitHub Profile"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/ChandaTharun"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-black transition"
-            aria-label="LinkedIn Profile"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
-      </div>
-    </section>
+            <Typography
+              variant="h4"
+              align="center"
+              gutterBottom
+              fontWeight={700}
+              color="#ffffff"
+            >
+              Let’s Work Together
+            </Typography>
+            <Typography variant="body1" align="center" color="#aaa" mb={4}>
+              Have a project, question, or just want to connect? I’d love to hear from you.
+            </Typography>
+
+            <Box component="form" onSubmit={handleSubmit} noValidate>
+              <Grid container spacing={2}>
+                {["name", "email", "subject", "message", "captcha"].map((field) => (
+                  <Grid item xs={12} key={field}>
+                    <motion.div
+                      whileFocus={{ scale: 1.01 }}
+                      transition={{ type: "spring", stiffness: 100 }}
+                    >
+                      <TextField
+                        fullWidth
+                        required={field !== "subject"}
+                        label={
+                          field === "captcha" ? "2 + 3 = ?" :
+                            field.charAt(0).toUpperCase() + field.slice(1)
+                        }
+                        name={field}
+                        type={field === "email" ? "email" : "text"}
+                        value={form[field]}
+                        onChange={handleChange}
+                        multiline={field === "message"}
+                        rows={field === "message" ? 4 : undefined}
+                        variant="outlined"
+                        InputLabelProps={{ style: { color: "#bbb" } }}
+                        InputProps={{
+                          style: {
+                            color: "#fff",
+                            borderColor: "#555",
+                          },
+                        }}
+                        sx={{
+                          "& .MuiOutlinedInput-root": {
+                            "& fieldset": {
+                              borderColor: "#555",
+                            },
+                            "&:hover fieldset": {
+                              borderColor: "#888",
+                            },
+                            "&.Mui-focused fieldset": {
+                              borderColor: "#00bcd4",
+                            },
+                          },
+                        }}
+                      />
+                    </motion.div>
+                  </Grid>
+                ))}
+              </Grid>
+
+              <Box textAlign="center" mt={4}>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    disabled={loading}
+                    sx={{
+                      minWidth: 160,
+                      background: "linear-gradient(135deg, #00bcd4, #006064)",
+                      color: "#fff",
+                      fontWeight: "bold",
+                      boxShadow: "0px 4px 20px rgba(0, 188, 212, 0.3)",
+                      "&:hover": {
+                        background: "linear-gradient(135deg, #00acc1, #004d40)",
+                      },
+                    }}
+                  >
+                    {loading ? <CircularProgress size={24} color="inherit" /> : "Send Message"}
+                  </Button>
+                </motion.div>
+              </Box>
+            </Box>
+
+            <Box mt={6} textAlign="center">
+              <Typography variant="body2" color="#aaa" gutterBottom>
+                Or connect with me on
+              </Typography>
+              <Box display="flex" justifyContent="center" gap={2}>
+                {[{
+                  icon: <FaEnvelope />,
+                  label: "Email",
+                  link: "mailto:b23121@students.iitmandi.ac.in",
+                }, {
+                  icon: <FaGithub />,
+                  label: "GitHub",
+                  link: "https://github.com/TharunChanda",
+                }, {
+                  icon: <FaLinkedin />,
+                  label: "LinkedIn",
+                  link: "https://linkedin.com/in/ChandaTharun",
+                }].map(({ icon, label, link }) => (
+                  <motion.div whileHover={{ scale: 1.2 }} key={label}>
+                    <IconButton
+                      aria-label={label}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      sx={{ color: "#00bcd4" }}
+                    >
+                      {icon}
+                    </IconButton>
+                  </motion.div>
+                ))}
+              </Box>
+            </Box>
+          </Paper>
+        </motion.div>
+      </Container>
+
+      <Snackbar
+        open={feedback.open}
+        autoHideDuration={4000}
+        onClose={() => setFeedback({ ...feedback, open: false })}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          severity={feedback.success ? "success" : "error"}
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {feedback.message}
+        </Alert>
+      </Snackbar>
+    </Box>
   );
 }

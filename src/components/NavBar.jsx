@@ -1,10 +1,30 @@
 import React, { useState } from "react";
-import { AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemText, Typography, useMediaQuery, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+  useMediaQuery,
+  Box,
+  Button,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { motion } from "framer-motion";
 import { useTheme } from "@mui/material/styles";
 
-const navItems = ["home", "about", "experience", "projects", "certifications", "contact"];
+const navItems = [
+  "home",
+  "about",
+  "experience",
+  "education",
+  "projects",
+  "certifications",
+  "contact",
+];
 
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -21,7 +41,10 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <AppBar position="fixed" sx={{ backgroundColor: "black", boxShadow: 3, zIndex: 1201 }}>
+      <AppBar
+        position="fixed"
+        sx={{ backgroundColor: "black", boxShadow: 3, zIndex: 1201 }}
+      >
         <Toolbar sx={{ justifyContent: "space-between" }}>
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }}>
@@ -40,9 +63,18 @@ export default function Navbar() {
             </Typography>
           </motion.div>
 
-          {/* Nav links - Desktop */}
+          {/* Desktop Nav */}
           {!isMobile && (
-            <Box component={motion.ul} sx={{ display: "flex", gap: 4, listStyle: "none", m: 0, p: 0 }}
+            <Box
+              component={motion.ul}
+              sx={{
+                display: "flex",
+                gap: 4,
+                listStyle: "none",
+                m: 0,
+                p: 0,
+                alignItems: "center",
+              }}
               initial="hidden"
               animate="visible"
               variants={{
@@ -56,7 +88,7 @@ export default function Navbar() {
                     hidden: { opacity: 0, y: -10 },
                     visible: { opacity: 1, y: 0 },
                   }}
-                  whileHover={{ scale: 1.1, color: "#ffffff" }}
+                  whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <a
@@ -74,16 +106,47 @@ export default function Navbar() {
                   </a>
                 </motion.li>
               ))}
+
+              {/* Resume Download Button */}
+              <motion.li
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                style={{ listStyle: "none" }}
+              >
+                <Button
+                  variant="contained"
+                  href="/my-portfolio/Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    textTransform: "none",
+                    minWidth: 160,
+                    background: "linear-gradient(135deg, #00bcd4, #006064)",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    boxShadow: "0px 4px 20px rgba(0, 188, 212, 0.3)",
+                    "&:hover": {
+                      background: "linear-gradient(135deg, #00acc1, #004d40)",
+                    },
+                  }}
+                >
+                  Resume
+                </Button>
+              </motion.li>
             </Box>
           )}
 
-          {/* Hamburger menu - Mobile */}
+          {/* Mobile Hamburger */}
           {isMobile && (
             <>
               <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
                 <MenuIcon />
               </IconButton>
-              <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+              <Drawer
+                anchor="right"
+                open={drawerOpen}
+                onClose={toggleDrawer(false)}
+              >
                 <Box
                   sx={{ width: 250, bgcolor: "black", height: "100%", p: 2 }}
                   role="presentation"
@@ -92,15 +155,43 @@ export default function Navbar() {
                 >
                   <List>
                     {navItems.map((item) => (
-                      <ListItem button component="a" href={`#${item}`} key={item}>
+                      <ListItem
+                        button
+                        component="a"
+                        href={`#${item}`}
+                        key={item}
+                      >
                         <ListItemText
                           primary={item}
                           primaryTypographyProps={{
-                            sx: { color: "white", textTransform: "capitalize" },
+                            sx: {
+                              color: "white",
+                              textTransform: "capitalize",
+                            },
                           }}
                         />
                       </ListItem>
                     ))}
+
+                    {/* Resume in Drawer */}
+                    <ListItem
+                      button
+                      component="a"
+                      href="/my-portfolio/Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ListItemText
+                        primary="Resume"
+                        primaryTypographyProps={{
+                          sx: {
+                            color: "white",
+                            textTransform: "capitalize",
+                            fontWeight: "bold",
+                          },
+                        }}
+                      />
+                    </ListItem>
                   </List>
                 </Box>
               </Drawer>
@@ -108,7 +199,7 @@ export default function Navbar() {
           )}
         </Toolbar>
       </AppBar>
-      {/* Add spacing for fixed navbar */}
+      {/* Spacer for fixed AppBar */}
       <Toolbar />
     </motion.div>
   );
