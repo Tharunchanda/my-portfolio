@@ -91,11 +91,11 @@ export default function Education() {
             />
             <div className="bg-gray-800 hover:bg-gray-900 p-6 rounded-lg shadow-md ml-6 sm:ml-10">
               <h3 className="text-xl font-semibold text-gray-100">
-                Sri Chaitanya Junior College, Hyderabad
+                Narayana CO - Olympiad School, Hyderabad
               </h3>
               <p className="text-gray-200 mt-2">
                 <strong>Secondary Education (Class X)</strong> <br />
-                July 2021 <br />
+                May 2021 <br />
                 <span className="text-gray-300">Percentage: 100%</span>
               </p>
             </div>

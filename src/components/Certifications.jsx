@@ -134,7 +134,7 @@ function CertificationList({ certs, onImageClick }) {
       {certs.map((c, i) => (
         <motion.div
           key={i}
-          className="relative group  overflow-hidden shadow-md hover:shadow-xl transform hover:scale-[1.04] transition-all duration-300 cursor-pointer"
+          className="relative group border border-gray-700 overflow-hidden shadow-md hover:shadow-xl transform hover:scale-[1.04] transition-all duration-300 cursor-pointer"
           onClick={() => onImageClick(c.img)}
           role="button"
           tabIndex={0}

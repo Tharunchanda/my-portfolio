@@ -1,5 +1,5 @@
 // src/components/Contact.jsx
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Box,
   Container,
@@ -12,10 +12,9 @@ import {
   CircularProgress,
   Snackbar,
   Alert,
-  useTheme,
 } from "@mui/material";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {
@@ -35,6 +34,12 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check if all fields are filled
+    if (!form.name || !form.email || !form.subject || !form.message || !form.captcha) {
+      setFeedback({ open: true, success: false, message: "Please fill in all fields." });
+      return;
+    }
 
     if (form.captcha !== "5") {
       setFeedback({ open: true, success: false, message: "CAPTCHA incorrect. Try again." });
@@ -70,6 +75,9 @@ export default function Contact() {
       );
   };
 
+  const svgRef = useRef(null);
+  const svgInView = useInView(svgRef, { once: true, margin: "-100px" });
+
   return (
     <Box
       id="contact"
@@ -89,10 +97,10 @@ export default function Contact() {
             elevation={0}
             sx={{
               p: 5,
-              backgroundColor: "rgba(34,34,34,0.5)", // semi-transparent dark
+              backgroundColor: "rgba(0,0,0,0)",
               borderRadius: 3,
               boxShadow: "0 8px 32px 0 rgba(0,0,0,0.25)",
-              backdropFilter: "blur(8px)", // glassmorphism effect
+              backdropFilter: "blur(100px)",
             }}
           >
             <Typography
@@ -107,6 +115,44 @@ export default function Contact() {
             <Typography variant="body1" align="center" color="#aaa" mb={4}>
               Have a project, question, or just want to connect? I’d love to hear from you.
             </Typography>
+
+            {/* Animated SVG Mail Icon */}
+            <Box display="flex" justifyContent="center" mb={3} ref={svgRef}>
+              <motion.svg
+                width="64"
+                height="64"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                initial="hidden"
+                animate={svgInView ? "visible" : "hidden"}
+              >
+                <motion.rect
+                  x="8"
+                  y="16"
+                  width="48"
+                  height="32"
+                  rx="6"
+                  stroke="#00bcd4"
+                  strokeWidth="3"
+                  fill="none"
+                  variants={{
+                    hidden: { pathLength: 0 },
+                    visible: { pathLength: 1, transition: { duration: 1.2, ease: "easeInOut" } }
+                  }}
+                />
+                <motion.path
+                  d="M8 16L32 36L56 16"
+                  stroke="#00bcd4"
+                  strokeWidth="3"
+                  fill="none"
+                  variants={{
+                    hidden: { pathLength: 0 },
+                    visible: { pathLength: 1, transition: { duration: 1.2, delay: 0.6, ease: "easeInOut" } }
+                  }}
+                />
+              </motion.svg>
+            </Box>
 
             <Box component="form" onSubmit={handleSubmit} noValidate>
               <Grid container spacing={2}>
@@ -219,6 +265,21 @@ export default function Contact() {
           </Paper>
         </motion.div>
       </Container>
+
+      <Snackbar
+        open={feedback.open}
+        autoHideDuration={4000}
+        onClose={() => setFeedback({ ...feedback, open: false })}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setFeedback({ ...feedback, open: false })}
+          severity={feedback.success ? "success" : "warning"}
+          sx={{ width: "100%" }}
+        >
+          {feedback.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
