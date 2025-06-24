@@ -82,7 +82,7 @@ export default function Hero() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-6 p-5 bg-white text-gray-900 border-l-4 border-gray-700 italic rounded-md shadow-md"
+            className="mt-6 p-5 bg-white text-gray-900 border-l-4 border-gray-500 italic rounded-md shadow-md"
           >
             "Code is like humor. When you have to explain it, it’s bad." – Cory House
           </motion.blockquote>

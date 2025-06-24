@@ -27,6 +27,7 @@ const certifications = {
   more: [
     { title: "JP Morgan Software Job simulation", year: 2023, img: "/my-portfolio/certificates/JP_Morgan_certificate.jpg" },
     { title: "Python for ML", year: 2023, img: "/my-portfolio/certificates/ML_by_Great_Learning.jpg" },
+    { title: "Certificate of excellence", year: 2025, img: "/my-portfolio/certificates/coe.png" },
   ],
 };
 

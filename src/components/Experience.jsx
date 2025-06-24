@@ -5,10 +5,10 @@ const experiences = [
   {
     role: "Summer Intern for Course Management System",
     company: "IIT Mandi",
-    duration: "Jun 2025 - Aug 2025",
-    details: "Worked on frontend React features and REST APIs integration.",
+    duration: "Jun 2025 - present on-going",
+    details: "Working on frontend React features and REST APIs integration.",
     github: "https://github.com/Tharunchanda/CMS-Frontend",
-    live: "",
+    live: "https://tharunchanda.github.io/CMS-Frontend",
     image: "/my-portfolio/images/cms.jpg", // Add your image path here
   },
   // Add more experiences here with github/live/image if needed
@@ -64,7 +64,7 @@ export default function Experience() {
                         href={exp.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition text-sm font-semibold"
+                        className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-900 transition text-sm font-semibold"
                       >
                         View Project
                       </a>
@@ -74,7 +74,7 @@ export default function Experience() {
                         href={exp.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm font-semibold"
+                        className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-900 transition text-sm font-semibold"
                       >
                         View Code
                       </a>

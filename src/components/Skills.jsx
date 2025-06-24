@@ -39,7 +39,7 @@ const duplicatedSkills = [...skills, ...skills];
 
 export default function Skills() {
   return (
-    <div className="w-full overflow-hidden bg-gradient-to-br from-gray-800 via-gray-600 to-gray-800 py-10">
+    <div className="w-full overflow-hidden bg-gradient-to-br from-gray-900 via-gray-600 to-gray-900 py-10">
       <div className="relative h-[120px] w-full">
         <div className="flex gap-10 whitespace-nowrap w-max animate-scroll-slow">
           {duplicatedSkills.map((skill, idx) => (

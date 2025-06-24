@@ -50,7 +50,7 @@ export default function Education() {
               <p className="text-gray-200 mt-2">
                 <strong>B.Tech in Computer Science and Engineering</strong> <br />
                 July 2023 – Present <br />
-                <span className="text-gray-300">CGPA: 7.88 / 10.0</span>
+                <span className="text-gray-300">CGPA: 7.85 / 10.0</span>
                 <br />
                 <span className="italic text-gray-300">
                   Key Courses: Data Structures, Algorithms, Artificial Intelligence, Web Technologies, DBMS
