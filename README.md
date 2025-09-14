@@ -1,61 +1,71 @@
-My Portfolio
 
-A personal portfolio website built using React, Vite, Tailwind CSS, and other modern web tools. Showcases my projects, skills, and background.
+````markdown
+# My Portfolio
 
-This repository contains the code for my personal portfolio website.
-The goal is to create a clean, responsive, and performant site to present my profile, projects, skills, and contact info. It uses modern frontend tools to enable a smooth developer experience and fast load times.
+A personal portfolio website built using **React**, **Vite**, **Tailwind CSS**, and other modern web tools. Showcases my projects, skills, and background.
 
-✨ Features
+This repository contains the code for my personal portfolio website.  
+The goal is to create a **clean, responsive, and performant site** to present my profile, projects, skills, and contact info. It uses modern frontend tools to enable a smooth developer experience and fast load times.
 
-📱 Mobile responsive design
+---
 
-🎨 Clean UI and UX
+## ✨ Features
 
-🌗 Dark/light mode (if applicable)
+- 📱 Mobile responsive design  
+- 🎨 Clean UI and UX  
+- 🌗 Dark/light mode (if applicable)  
+- 📂 Dynamic project list (if you pull from data or CMS)  
+- ⚡ Fast development and build times via Vite  
+- 🛠 Easy to maintain and extend  
 
-📂 Dynamic project list (if you pull from data or CMS)
+---
 
-⚡ Fast development and build times via Vite
+## 🧰 Tech Stack
 
-🛠 Easy to maintain and extend
+- **Framework / Tooling:** React + Vite  
+- **Styling:** Tailwind CSS  
+- **Linting / Formatting:** ESLint, Prettier (if configured)  
+- **Build / Bundling:** Vite  
+- **Configuration:** postcss, tailwind.config.js, vite.config.js  
 
-🧰 Tech Stack
+---
 
-Framework / Tooling: React + Vite
+## 🚀 Getting Started
 
-Styling: Tailwind CSS
+### Prerequisites
 
-Linting / Formatting: ESLint, Prettier (if configured)
+- Node.js (v14 or higher recommended)  
+- npm or yarn  
 
-Build / Bundling: Vite
+### Installation
 
-Configuration: postcss, tailwind.config.js, vite.config.js
-
-🚀 Getting Started
-Prerequisites
-
-Node.js (v14 or higher recommended)
-
-npm or yarn
-
-Installation
+```bash
 git clone https://github.com/Tharunchanda/my-portfolio.git
 cd my-portfolio
 npm install
+````
 
-Run Locally
+### Run Locally
+
+```bash
 npm run dev
+```
 
+This will start the dev server (usually at `http://localhost:3000` or as configured). Changes will hot-reload.
 
-This will start the dev server (usually at http://localhost:3000 or as configured). Changes will hot-reload.
+### Build
 
-Build
+```bash
 npm run build
+```
 
+Generates production-ready build in the `dist` (or `build`) folder.
 
-Generates production-ready build in the dist (or build) folder.
+---
 
-📂 Project Structure
+## 📂 Project Structure
+
+```
 my-portfolio/
 ├─ public/               # static assets like images, favicon
 ├─ src/                  # source files
@@ -70,49 +80,53 @@ my-portfolio/
 ├─ postcss.config.js
 ├─ vite.config.js
 └─ README.md
+```
 
-🎨 Customisation
+---
+
+## 🎨 Customisation
 
 You can easily customise:
 
-Colors, typography etc in tailwind.config.js
+* Colors, typography etc in `tailwind.config.js`
+* Meta tags, titles, SEO related settings in the main HTML / head sections
+* Projects / content by modifying data files or components where you listed them
+* Add new pages by creating components/pages and routing them in React (if using routing)
 
-Meta tags, titles, SEO related settings in the main HTML / head sections
+---
 
-Projects / content by modifying data files or components where you listed them
-
-Add new pages by creating components/pages and routing them in React (if using routing)
-
-🌍 Deployment
+## 🌍 Deployment
 
 This portfolio can be deployed on platforms like:
 
-GitHub Pages
-
-Any static-site friendly hosting (Netlify, Vercel, etc.)
+* **GitHub Pages**
+* **Any static-site friendly hosting (Netlify, Vercel, etc.)**
 
 Typical steps:
 
-Build with npm run build
+1. Build with `npm run build`
+2. Upload the `dist` (or output) folder contents
+3. Configure your domain (optional)
 
-Upload the dist (or output) folder contents
+---
 
-Configure your domain (optional)
-
-🤝 Contributing
+## 🤝 Contributing
 
 If you want to contribute:
 
-Fork the repo
+1. Fork the repo
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Make your changes and commit cleanly
+4. Open a Pull Request
 
-Create a new branch: git checkout -b feature/your-feature
+---
 
-Make your changes and commit cleanly
+## 📬 Contact
 
-Open a Pull Request
+* **LinkedIn:** [Chanda Tharun](https://www.linkedin.com/in/chandatharun/)
+* **GitHub:** [Tharunchanda](https://github.com/Tharunchanda)
 
-📬 Contact
+```
 
-LinkedIn: Chanda Tharun
-
-GitHub: Tharunchanda
+Do you want me to also add a **preview section with screenshot placeholders** (like `![Portfolio Screenshot](./screenshot.png)`) so it looks even better on GitHub?
+```
