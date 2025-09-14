@@ -1,16 +1,118 @@
-<<<<<<< HEAD
-# React + Vite
+My Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal portfolio website built using React, Vite, Tailwind CSS, and other modern web tools. Showcases my projects, skills, and background.
 
-Currently, two official plugins are available:
+This repository contains the code for my personal portfolio website.
+The goal is to create a clean, responsive, and performant site to present my profile, projects, skills, and contact info. It uses modern frontend tools to enable a smooth developer experience and fast load times.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Features
 
-## Expanding the ESLint configuration
+📱 Mobile responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# my-portfolio
->>>>>>> e7ea956839ec237c1bd237db77f03374345363dc
+🎨 Clean UI and UX
+
+🌗 Dark/light mode (if applicable)
+
+📂 Dynamic project list (if you pull from data or CMS)
+
+⚡ Fast development and build times via Vite
+
+🛠 Easy to maintain and extend
+
+🧰 Tech Stack
+
+Framework / Tooling: React + Vite
+
+Styling: Tailwind CSS
+
+Linting / Formatting: ESLint, Prettier (if configured)
+
+Build / Bundling: Vite
+
+Configuration: postcss, tailwind.config.js, vite.config.js
+
+🚀 Getting Started
+Prerequisites
+
+Node.js (v14 or higher recommended)
+
+npm or yarn
+
+Installation
+git clone https://github.com/Tharunchanda/my-portfolio.git
+cd my-portfolio
+npm install
+
+Run Locally
+npm run dev
+
+
+This will start the dev server (usually at http://localhost:3000 or as configured). Changes will hot-reload.
+
+Build
+npm run build
+
+
+Generates production-ready build in the dist (or build) folder.
+
+📂 Project Structure
+my-portfolio/
+├─ public/               # static assets like images, favicon
+├─ src/                  # source files
+│   ├─ components/       # reusable React components
+│   ├─ pages/            # different pages/views
+│   ├─ styles/           # Tailwind / CSS / utility styles
+│   ├─ assets/           # images, icons, etc.
+│   └─ main.jsx          # React entry point
+├─ .gitignore
+├─ package.json
+├─ tailwind.config.js
+├─ postcss.config.js
+├─ vite.config.js
+└─ README.md
+
+🎨 Customisation
+
+You can easily customise:
+
+Colors, typography etc in tailwind.config.js
+
+Meta tags, titles, SEO related settings in the main HTML / head sections
+
+Projects / content by modifying data files or components where you listed them
+
+Add new pages by creating components/pages and routing them in React (if using routing)
+
+🌍 Deployment
+
+This portfolio can be deployed on platforms like:
+
+GitHub Pages
+
+Any static-site friendly hosting (Netlify, Vercel, etc.)
+
+Typical steps:
+
+Build with npm run build
+
+Upload the dist (or output) folder contents
+
+Configure your domain (optional)
+
+🤝 Contributing
+
+If you want to contribute:
+
+Fork the repo
+
+Create a new branch: git checkout -b feature/your-feature
+
+Make your changes and commit cleanly
+
+Open a Pull Request
+
+📬 Contact
+
+LinkedIn: Chanda Tharun
+
+GitHub: Tharunchanda
