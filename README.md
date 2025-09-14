@@ -1,5 +1,3 @@
-
-````markdown
 # My Portfolio
 
 A personal portfolio website built using **React**, **Vite**, **Tailwind CSS**, and other modern web tools. Showcases my projects, skills, and background.
@@ -126,7 +124,4 @@ If you want to contribute:
 * **LinkedIn:** [Chanda Tharun](https://www.linkedin.com/in/chandatharun/)
 * **GitHub:** [Tharunchanda](https://github.com/Tharunchanda)
 
-```
 
-Do you want me to also add a **preview section with screenshot placeholders** (like `![Portfolio Screenshot](./screenshot.png)`) so it looks even better on GitHub?
-```
